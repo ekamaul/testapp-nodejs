@@ -20,5 +20,5 @@ res.send('Hello World yeahhh!');
 app.use("/api/products", productRouter)
 
 app.listen(PORT, () => {
-    console.log('Server Running in :', PORT)
+    console.log('Server Running in :', 'localhost:'+ PORT)
 });
