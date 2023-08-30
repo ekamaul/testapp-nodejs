@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const PORT = process.env.SERVER_PORT || 3005;
+const cors = require('cors')
 
 //  tanda ' || ' itu = 'atau', jika port yang kita setting sudah dipakai oleh aplikasi lain
 //  kita bisa pakai port cadangan yaitu 3005
@@ -12,6 +13,11 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors({origin: true, credentials: true}))
+
+
+// kode buat ngecek di console browser nya
+// fetch('http://localhost:3003/home').then(req => req.text()).then(console.log)
 
 app.get("/home", (req, res) => {
 res.send('Hello World yeahhh!');
