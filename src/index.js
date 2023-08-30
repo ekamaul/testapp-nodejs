@@ -6,6 +6,7 @@ const PORT = process.env.SERVER_PORT || 3005;
 //  kita bisa pakai port cadangan yaitu 3005
 
 const productRouter = require('./routes/product.route')
+const userRouter = require('./routes/user.route')
 
 const app = express();
 
@@ -18,6 +19,7 @@ res.send('Hello World yeahhh!');
 });
 
 app.use("/api/products", productRouter)
+app.use("/api/user", userRouter)
 
 app.listen(PORT, () => {
     console.log('Server Running in :', 'localhost:'+ PORT)
