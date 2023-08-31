@@ -3,7 +3,8 @@ const {usernew} = require('../models')
 const bcrypt = require('bcryptjs')
 
 const create = async (req, res) => {
-    const {nama_depan, nama_belakang, email,password, username} = req.body
+    try {
+        const {nama_depan, nama_belakang, email,password, username} = req.body
     
 
     // data users merujuk ke tabel yg dibuat oleh knex di database mysql
@@ -35,7 +36,45 @@ const create = async (req, res) => {
     return res.status(201).send({
         message : "user created"
     })
+
+    }
+    catch (error) {
+        console.log(error)
+        return res.send({
+            message: 'error occured',
+            data: error
+        })
+    }
         
 }
 
-module.exports = {create}
+const login = async (req, res) => {
+    try {
+        const { username, password} = req.body
+
+        if (!password || !username)  {
+            return res.status(400).send({
+                message: 'some field must be filled, cannot be empty'
+            })
+        }
+
+        return res.status(200).send({
+            message: 'login sukses'
+        })
+
+        const getUser = await usernew.findOne({
+            where: {username : username}
+        })
+
+
+    }
+    catch (error) {
+        console.log(error)
+        return res.send({
+            message: 'error occured',
+            data: error
+        })
+    }
+}
+
+module.exports = {create, login}
