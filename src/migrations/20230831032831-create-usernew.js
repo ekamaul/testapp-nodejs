@@ -11,11 +11,11 @@ module.exports = {
       },
       firstname: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       lastname: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: true
       },
       username: {
         type: Sequelize.STRING,
@@ -33,9 +33,18 @@ module.exports = {
       },
       roles: {
         type: Sequelize.STRING,
-        allowNull: false,
+        
         defaultValue: 'user'
       },
+      profilepic: {
+        type: Sequelize.STRING,
+        defaultValue: 'thisispict',
+        allowNull: true,
+        
+        
+      },
+
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
